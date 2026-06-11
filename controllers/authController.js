@@ -1,18 +1,15 @@
 const User = require('../models/users'); 
 const bcrypt = require('bcryptjs');
 
-
 exports.register = async (req, res) => {
     try {
         const { username, password } = req.body;
-        
-       
         const hashedPassword = await bcrypt.hash(password, 10);
         
         const newUser = new User({
             username: username,
             password: hashedPassword,
-            role: 'user' 
+            role: 'user'
         });
         
         await newUser.save();
@@ -28,7 +25,6 @@ exports.login = async (req, res) => {
     try {
         const { username, password } = req.body;
         const user = await User.findOne({ username: username });
-        
         
         if (user && await bcrypt.compare(password, user.password)) {
             req.session.userId = user._id; 

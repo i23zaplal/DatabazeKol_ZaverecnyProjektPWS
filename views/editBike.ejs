@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <title>Upravit položku</title>
+</head>
+<body>
+    <h1>Upravit detaily v databázi</h1>
+    
+    <form action="/edit/<%= bike._id %>" method="POST" enctype="multipart/form-data">
+        <div>
+            <label>Název / Model:</label><br>
+            <input type="text" name="name" value="<%= bike.name %>" required>
+        </div>
+        <br>
+        <div>
+            <label>Typ:</label><br>
+            <select name="type">
+                <option value="Celoodpružené" <%= bike.type === 'Celoodpružené' ? 'selected' : '' %>>Celoodpružené</option>
+                <option value="Hardtail" <%= bike.type === 'Hardtail' ? 'selected' : '' %>>Hardtail</option>
+            </select>
+        </div>
+        <br>
+        <div>
+            <label>Třída / Náročnost:</label><br>
+            <select name="level">
+                <option value="Základní" <%= bike.level === 'Základní' ? 'selected' : '' %>>Základní</option>
+                <option value="Střední" <%= bike.level === 'Střední' ? 'selected' : '' %>>Střední</option>
+                <option value="Nejlepší" <%= bike.level === 'Nejlepší' ? 'selected' : '' %>>Nejlepší</option>
+            </select>
+        </div>
+        <br>
+        <div>
+            <label>Popis / Podrobnosti:</label><br>
+            <textarea name="description" rows="4" required><%= bike.description %></textarea>
+        </div>
+        <br>
+        <div>
+            <label>Změnit fotku (pokud nevybereš žádnou, zůstane ta stará):</label><br>
+            <input type="file" name="image" accept="image/*">
+        </div>
+        <br>
+        <button type="submit">Uložit změny</button>
+    </form>
+
+    <br>
+    <a href="/">Zpět na hlavní stránku</a>
+</body>
+</html>
