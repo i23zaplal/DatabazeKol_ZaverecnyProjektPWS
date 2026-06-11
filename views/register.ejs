@@ -2,23 +2,33 @@
 <html lang="cs">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrace | Databáze kol</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <h1>Registrace do databáze</h1>
-    <form action="/register" method="POST">
-        <div>
-            <label>Uživatelské jméno:</label>
-            <input type="text" name="username" required>
+
+    <div class="form-container" style="margin-top: 100px;">
+        <h1 style="text-align: center; margin-bottom: 30px;">Nová registrace</h1>
+        
+        <form action="/register" method="POST">
+            <div class="form-group">
+                <label>Vytvoř si jméno:</label>
+                <input type="text" name="username" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Vytvoř si heslo:</label>
+                <input type="password" name="password" required>
+            </div>
+            
+            <button type="submit" class="btn btn-primary" style="width: 100%; font-size: 1.1rem; padding: 15px; margin-top: 10px;">Zaregistrovat se</button>
+        </form>
+        
+        <div style="text-align: center; margin-top: 20px;">
+            <p style="color: #636e72;">Už máš účet? <a href="/login" style="color: #27ae60; font-weight: bold; text-decoration: none;">Přihlas se</a></p>
         </div>
-        <br>
-        <div>
-            <label>Heslo:</label>
-            <input type="password" name="password" required>
-        </div>
-        <br>
-        <button type="submit">Zaregistrovat se</button>
-    </form>
-    <p>Už máš účet? <a href="/login">Přihlásit se</a></p>
+    </div>
+
 </body>
 </html>

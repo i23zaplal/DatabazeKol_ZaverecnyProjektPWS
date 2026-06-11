@@ -2,48 +2,56 @@
 <html lang="cs">
 <head>
     <meta charset="UTF-8">
-    <title>Přidat kolo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Přidat nové kolo</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <h1>Přidat nové kolo do databáze</h1>
-    
-    <form action="/add" method="POST" enctype="multipart/form-data">
-        <div>
-            <label>Název kola:</label><br>
-            <input type="text" name="name" required>
-        </div>
-        <br>
-        <div>
-            <label>Typ:</label><br>
-            <select name="type">
-                <option value="Celoodpružené">Celoodpružené</option>
-                <option value="Hardtail">Hardtail</option>
-            </select>
-        </div>
-        <br>
-        <div>
-            <label>Třída vybavení:</label><br>
-            <select name="level">
-                <option value="Základní">Základní</option>
-                <option value="Střední">Střední</option>
-                <option value="Nejlepší">Nejlepší</option>
-            </select>
-        </div>
-        <br>
-        <div>
-            <label>Popis / Komponenty:</label><br>
-            <textarea name="description" rows="4" required></textarea>
-        </div>
-        <br>
-        <div>
-            <label>Fotka kola:</label><br>
-            <input type="file" name="image" accept="image/*">
-        </div>
-        <br>
-        <button type="submit">Uložit kolo</button>
-    </form>
 
-    <br>
-    <a href="/">Zpět na seznam</a>
+    <div class="header">
+        <h1>Přidat nové kolo do databáze</h1>
+        <a href="/" class="btn btn-outline">Zpět na seznam</a>
+    </div>
+
+    <div class="form-container">
+        <form action="/add" method="POST" enctype="multipart/form-data">
+            
+            <div class="form-group">
+                <label>Název kola:</label>
+                <input type="text" name="name" placeholder="Např. Trek Slash 8" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Typ:</label>
+                <select name="type">
+                    <option value="Celoodpružené">Celoodpružené</option>
+                    <option value="Hardtail">Hardtail</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label>Třída vybavení:</label>
+                <select name="level">
+                    <option value="Základní">Základní</option>
+                    <option value="Střední">Střední</option>
+                    <option value="Nejlepší">Nejlepší</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label>Popis / Komponenty:</label>
+                <textarea name="description" rows="4" placeholder="Zadej podrobný popis kola, jeho stav a komponenty..." required></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label>Fotka kola:</label>
+                <input type="file" name="image" accept="image/*">
+            </div>
+            
+            <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px; font-size: 1.1rem; padding: 15px;">Uložit kolo</button>
+            
+        </form>
+    </div>
+
 </body>
 </html>
