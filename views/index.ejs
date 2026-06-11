@@ -19,29 +19,24 @@
         <div class="grid-container">
             <% bikes.forEach(bike => { %>
                 <div class="card">
-                    <% if (bike.image) { %>
-                        <img src="/uploads/<%= bike.image %>" alt="<%= bike.name %>" class="card-img">
-                    <% } else { %>
-                        <img src="https://via.placeholder.com/400x220?text=Bez+fotografie" alt="No image" class="card-img">
-                    <% } %>
+                    <a href="/bike/<%= bike._id %>" style="text-decoration: none; color: inherit;">
+                        <% if (bike.image) { %>
+                            <img src="/uploads/<%= bike.image %>" alt="<%= bike.name %>" class="card-img">
+                        <% } else { %>
+                            <img src="https://via.placeholder.com/400x220?text=Bez+fotografie" alt="No image" class="card-img">
+                        <% } %>
+                        
+                        <div class="card-body">
+                            <h3 class="card-title"><%= bike.name %></h3>
+                            <p style="color: #27ae60; font-weight: bold; margin-bottom: 10px;">Cena: <%= bike.price %></p>
+                        </div>
+                    </a>
                     
-                    <div class="card-body">
-                        <h3 class="card-title"><%= bike.name %></h3>
-                        
-                        <div>
-                            <span class="card-badge"><%= bike.type %></span>
-                            <span class="card-badge"><%= bike.level %></span>
-                        </div>
-                        
-                        <p class="card-text"><%= bike.description %></p>
-                        
-                        <div class="card-actions">
-                            <a href="/edit/<%= bike._id %>" class="btn btn-warning">Upravit</a>
-                            
-                            <form action="/delete/<%= bike._id %>" method="POST" style="margin: 0;">
-                                <button type="submit" class="btn btn-danger" onclick="return confirm('Opravdu chceš toto kolo trvale smazat?')">Smazat</button>
-                            </form>
-                        </div>
+                    <div class="card-actions" style="padding: 0 25px 25px 25px;">
+                        <a href="/edit/<%= bike._id %>" class="btn btn-warning">Upravit</a>
+                        <form action="/delete/<%= bike._id %>" method="POST" style="margin: 0;">
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('Smazat?')">Smazat</button>
+                        </form>
                     </div>
                 </div>
             <% }) %>
@@ -49,7 +44,6 @@
     <% } else { %>
         <div style="text-align: center; padding: 50px; background: white; border-radius: 16px;">
             <h2 style="color: #b2bec3;">Zatím tu žádná kola nejsou</h2>
-            <p style="color: #636e72; margin-top: 10px;">Klikni na zelené tlačítko a přidej svůj první sjezďák nebo hardtail!</p>
         </div>
     <% } %>
 

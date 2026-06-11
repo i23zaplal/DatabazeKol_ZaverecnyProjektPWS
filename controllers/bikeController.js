@@ -81,3 +81,53 @@ exports.deleteBike = async (req, res) => {
         res.send("Chyba při mazání.");
     }
 };
+
+exports.getBikeDetails = async (req, res) => {
+    try {
+        const bike = await Bike.findById(req.params.id);
+        res.render('bikeDetails', { bike: bike });
+    } catch (err) {
+        console.error(err);
+        res.send("Kolo nenalezeno.");
+    }
+};
+
+exports.createBike = async (req, res) => {
+    try {
+        const newBike = new Bike({
+            name: req.body.name,
+            type: req.body.type,
+            level: req.body.level,
+            description: req.body.description,
+            price: req.body.price, // PŘIDÁNO: uložení ceny
+            image: req.file ? req.file.filename : null 
+        });
+        await newBike.save();
+        res.redirect('/'); 
+    } catch (err) {
+        console.log(err);
+        res.send("Chyba při ukládání kola.");
+    }
+};
+
+exports.updateBike = async (req, res) => {
+    try {
+        const updatedData = {
+            name: req.body.name,
+            type: req.body.type,
+            level: req.body.level,
+            description: req.body.description,
+            price: req.body.price // PŘIDÁNO: uložení ceny
+        };
+        
+        if (req.file) {
+            updatedData.image = req.file.filename;
+        }
+        await Bike.findByIdAndUpdate(req.params.id, updatedData);
+        res.redirect('/');
+    } catch (err) {
+        console.error(err);
+        res.send("Chyba při úpravě.");
+    }
+};
+

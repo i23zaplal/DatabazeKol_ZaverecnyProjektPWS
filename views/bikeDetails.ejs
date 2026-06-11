@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <title><%= bike.name %> | Detail</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="header">
+        <h1><%= bike.name %></h1>
+        <a href="/" class="btn btn-outline">Zpět na seznam</a>
+    </div>
+
+    <div class="form-container">
+        <img src="/uploads/<%= bike.image %>" alt="<%= bike.name %>" style="width:100%; border-radius:12px;">
+        <h2 style="margin-top: 20px; color: #27ae60;">Cena: <%= bike.price %></h2>
+        
+        <div style="margin: 20px 0; padding: 15px; background: #f8f9fa; border-radius: 8px;">
+            <p><strong>Typ:</strong> <%= bike.type %></p>
+            <p><strong>Úroveň:</strong> <%= bike.level %></p>
+        </div>
+        
+        <h3>Popis:</h3>
+        <p style="line-height: 1.6; margin-top: 10px;"><%= bike.description %></p>
+        
+        <div style="margin-top: 30px;">
+            <a href="/edit/<%= bike._id %>" class="btn btn-warning">Upravit detaily</a>
+        </div>
+    </div>
+</body>
+</html>
