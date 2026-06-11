@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <title>Registrace | Databáze kol</title>
+</head>
+<body>
+    <h1>Registrace do databáze</h1>
+    <form action="/register" method="POST">
+        <div>
+            <label>Uživatelské jméno:</label>
+            <input type="text" name="username" required>
+        </div>
+        <br>
+        <div>
+            <label>Heslo:</label>
+            <input type="password" name="password" required>
+        </div>
+        <br>
+        <button type="submit">Zaregistrovat se</button>
+    </form>
+    <p>Už máš účet? <a href="/login">Přihlásit se</a></p>
+</body>
+</html>
